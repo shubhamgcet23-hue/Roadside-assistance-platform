@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "eslint.workingDirectories": ["server", "client"],
+  "tailwindCSS.includeLanguages": { "javascript": "javascript", "javascriptreact": "javascript" },
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+  "search.exclude": { "**/node_modules": true, "**/dist": true }
+}

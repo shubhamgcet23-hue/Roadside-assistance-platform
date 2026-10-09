@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-ink-50 font-sans text-ink-900 antialiased; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  :focus-visible { outline: 3px solid #161c22; outline-offset: 2px; border-radius: 6px; }
+  .on-dark :focus-visible { outline-color: #ffc400; }
+  button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+}
+
+@layer components {
+  /* Road-marking motifs: the one distinctive visual device in the product */
+  .lane-dash { background-image: linear-gradient(90deg, #ffc400 0 50%, transparent 50% 100%); background-size: 28px 3px; background-repeat: repeat-x; height: 3px; }
+  .hazard { background-image: repeating-linear-gradient(-45deg, #ffc400 0 14px, #161c22 14px 28px); }
+  .safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
+}
+
+/* Leaflet markers (custom divIcons so no image assets are needed) */
+.pin { display: grid; place-items: center; border-radius: 9999px; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(0,0,0,.4); }
+.pin--user { width: 30px; height: 30px; background: #161c22; color: #ffc400; position: relative; }
+.pin--user::after { content: ''; position: absolute; inset: -10px; border-radius: 9999px; border: 2px solid rgba(22,28,34,.35); animation: ping-ring 2s ease-out infinite; }
+.pin--mechanic { width: 40px; height: 40px; background: #ffc400; color: #161c22; }
+.pin--partner { width: 30px; height: 30px; background: #fff; color: #161c22; border-color: #161c22; }
+.leaflet-marker-icon.mechanic-marker { transition: transform 1.4s linear; }
+@keyframes ping-ring { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+.leaflet-container { font-family: inherit; z-index: 0; }
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+.skeleton { position: relative; overflow: hidden; background: #e8ecf0; }
+.skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent); animation: shimmer 1.4s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}

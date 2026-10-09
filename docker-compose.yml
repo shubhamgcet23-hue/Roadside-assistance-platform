@@ -1,0 +1,13 @@
+# Local MongoDB for development: `docker compose up -d`
+# Then set MONGODB_URI=mongodb://127.0.0.1:27017/roadside_aaa in server/.env
+services:
+  mongo:
+    image: mongo:7
+    container_name: roadside-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - roadside-mongo-data:/data/db
+volumes:
+  roadside-mongo-data:
