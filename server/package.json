@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "seed": "node src/utils/seed.js",
     "test": "node test/run.js",
     "test:unit": "node test/run.js unit",
-    "lint": "eslint src test"
+    "lint": "eslint src test",
+    "create-admin": "node src/utils/createAdmin.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
